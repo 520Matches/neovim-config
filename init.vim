@@ -64,7 +64,7 @@ inoremap [ []<Left>
 inoremap ( ()<Left>
 inoremap " ""<Left>
 inoremap ' ''<Left>
-inoremap < <><Left>
+" inoremap < <><Left>
 
 " nnoremap <silent> g0 :?^{<CR>
 " nnoremap <silent> g9 :/^}<CR>
