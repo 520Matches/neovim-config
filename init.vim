@@ -138,7 +138,11 @@ Plug 'vim-airline/vim-airline-themes'
 
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
-Plug '520Matches/fcitx5.vim'
+if has("mac")
+	Plug 'lyokha/vim-xkbswitch'
+else
+	Plug '520Matches/fcitx5.vim'
+endif
 
 Plug 'matze/vim-move'
 
@@ -412,8 +416,18 @@ let g:rainbow_active = 1
 " let g:easycomplete_scheme="sharp"
 " 'luochen1990/rainbow'=========================================
 
+" Plug 'lyokha/vim-xkbswitch'
+if has("mac")
+	let g:XkbSwitchEnabled = 1
+else
+endif
+
 " Plug 'matze/vim-move'============================================
-let g:move_key_modifier = 'C'
+if has('mac')
+	let g:move_key_modifier = 'C'
+else
+	let g:move_key_modifier = 'A'
+endif
 " Plug 'matze/vim-move'============================================
 
 " Plug 'Blackrush/vim-gocode'========================================
