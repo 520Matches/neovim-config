@@ -21,6 +21,9 @@ set number
 set nohlsearch
 set relativenumber
 
+" 用<C-a>和<C-x>的时候默认是十进制
+set nrformats=
+
 "system=============================================================
 "可以和系统的剪贴板共用,unnamed是*寄存器,unnamedplus是+寄存器
 set clipboard^=unnamed,unnamedplus
