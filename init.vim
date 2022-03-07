@@ -40,8 +40,6 @@ map <leader>k <C-w>k
 map <leader>sp :set spell<CR>
 map <leader>sP :set spell!<CR>
 
-vnoremap <leader>vn : normal 
-
 map <F5> :source ~/.config/nvim/init.vim<CR>
 
 map sh :vsplit<CR>
