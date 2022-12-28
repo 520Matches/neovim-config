@@ -49,7 +49,7 @@ map sk :split<CR>
 
 map <up> :res +5<CR>
 map <down> :res -5<CR>
-map <left> :verticjl resize-5<CR>
+map <left> :vertical resize-5<CR>
 map <right> :vertical resize+5<CR>
 
 " 图片化字体,需要安装figlet
