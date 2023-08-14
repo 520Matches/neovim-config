@@ -1,18 +1,3 @@
-vim.cmd [[packadd packer.nvim]]
-
-return require('packer').startup(function(use)
-  -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
-
-  use 'voldikss/vim-floaterm'
-end)
-
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
-  augroup end
-]])
 
 local ensure_packer = function()
     local fn = vim.fn
@@ -28,10 +13,10 @@ local ensure_packer = function()
   local packer_bootstrap = ensure_packer()
   
   return require('packer').startup(function(use)
+    -- Packer can manage itself
     use 'wbthomason/packer.nvim'
-    -- My plugins here
-    -- use 'foo1/bar1.nvim'
-    -- use 'foo2/bar2.nvim'
+
+    use 'voldikss/vim-floaterm'
   
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

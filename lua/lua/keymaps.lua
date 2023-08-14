@@ -10,3 +10,12 @@ vim.keymap.set('i', '<C-l>', '<Right>', opts)
 
 vim.keymap.set('v', '<', '<gv', opts)
 vim.keymap.set('v', '>', '>gv', opts)
+
+vim.keymap.set('n', 'sh', ':vsplit<CR>')
+vim.keymap.set('n', 'sl', ':vsplit<CR><C-w>l')
+vim.keymap.set('n', 'sj', ':split<CR><C-w>j')
+vim.keymap.set('n', 'sk', ':split<CR>')
+vim.keymap.set('n', '<C-h>', '<C-w>h', opts)
+vim.keymap.set('n', '<C-j>', '<C-w>j', opts)
+vim.keymap.set('n', '<C-k>', '<C-w>k', opts)
+vim.keymap.set('n', '<C-l>', '<C-w>l', opts)
