@@ -19,3 +19,19 @@ vim.keymap.set('n', '<C-h>', '<C-w>h', opts)
 vim.keymap.set('n', '<C-j>', '<C-w>j', opts)
 vim.keymap.set('n', '<C-k>', '<C-w>k', opts)
 vim.keymap.set('n', '<C-l>', '<C-w>l', opts)
+
+vim.keymap.set('i', '{', '{}<Left>', opts)
+vim.keymap.set('i', '[', '[]<Left>', opts)
+vim.keymap.set('i', '(', '()<Left>', opts)
+vim.keymap.set('i', '"', '""<Left>', opts)
+vim.keymap.set('i', '\'', '\'\'<Left>', opts)
+
+-- voldikss/vim-floaterm
+-- vim.keymap.set('n', '<F9>', ':FloatermNew<CR>')
+-- vim.keymap.set('n', '<F10>', ':FloatermPrev<CR>')
+-- vim.keymap.set('n', '<F11>', ':FloatermNext<CR>')
+vim.keymap.set('n', '<F12>', ':FloatermToggle<CR>')
+
+-- bagrat/vim-buffet
+vim.keymap.set('n', '<Tab>', ':bn<CR>')
+vim.keymap.set('n', '<S-Tab>', ':bp<CR>')

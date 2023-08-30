@@ -17,7 +17,23 @@ local ensure_packer = function()
     use 'wbthomason/packer.nvim'
 
     use 'voldikss/vim-floaterm'
-  
+
+    use 'bagrat/vim-buffet'
+
+    use 'vim-airline/vim-airline'
+    use 'vim-airline/vim-airline-themes'
+
+    use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+
+    -- use 'terryma/vim-multiple-cursors'
+
+    -- use 'folke/flash.nvim'
+
+    use {
+      "nvim-telescope/telescope-file-browser.nvim",
+      requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+    }
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if packer_bootstrap then

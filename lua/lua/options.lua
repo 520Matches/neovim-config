@@ -19,10 +19,11 @@ vim.opt.clipboard = 'unnamedplus'
 
 vim.g.mapleader = ' '
 
--- 普通模式下用块状光标，在插入模式下用条状光标（形状类似英文 "I" 的样子），然后在替换模式中使用下划线形状的光标
-
-
--- 恢复到上次关闭文件时光标所在的位置
-
-
 -- 当前行高亮
+vim.opt.cursorline = true
+
+-- vim-floaterm
+-- vim.g.floaterm_keymap_new    = '<F9>'
+-- vim.g.floaterm_keymap_prev   = '<F10>'
+-- vim.g.floaterm_keymap_next   = '<F11>'
+-- vim.g.floaterm_keymap_toggle = '<F12>'
