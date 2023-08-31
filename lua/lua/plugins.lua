@@ -30,9 +30,26 @@ return require('packer').startup(function(use)
     -- use 'folke/flash.nvim'
 
     use {
-        "nvim-telescope/telescope-file-browser.nvim",
-        requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+        'nvim-telescope/telescope.nvim', tag = '0.1.2',
+        requires = { {'nvim-lua/plenary.nvim'} , {'nvim-telescope/telescope-file-browser.nvim'}}
     }
+    -- use {
+    --     "nvim-telescope/telescope-file-browser.nvim",
+    --     requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+    -- }
+
+    use 'chentoast/marks.nvim'
+
+    -- easy move
+    use {
+        'phaazon/hop.nvim',
+        branch = 'v2', -- optional but strongly recommended
+        config = function()
+            require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+        end
+    }
+
+    use 'junegunn/vim-easy-align'
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

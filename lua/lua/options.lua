@@ -18,9 +18,10 @@ vim.opt.relativenumber = true
 vim.opt.clipboard = 'unnamedplus'
 
 vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
 -- 当前行高亮
-vim.opt.cursorline = true
+vim.wo.cursorline = true
 
 -- vim-floaterm
 -- vim.g.floaterm_keymap_new    = '<F9>'
