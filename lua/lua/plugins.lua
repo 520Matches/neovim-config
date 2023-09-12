@@ -27,11 +27,14 @@ return require('packer').startup(function(use)
 
     -- use 'terryma/vim-multiple-cursors'
 
-    -- use 'folke/flash.nvim'
-
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.2',
-        requires = { {'nvim-lua/plenary.nvim'} , {'nvim-telescope/telescope-file-browser.nvim'}}
+        requires = 
+        {
+            {'nvim-lua/plenary.nvim'} ,
+            {'nvim-telescope/telescope-file-browser.nvim'},
+            {'nvim-telescope/telescope-project.nvim'},
+        }
     }
     -- use {
     --     "nvim-telescope/telescope-file-browser.nvim",
@@ -50,6 +53,17 @@ return require('packer').startup(function(use)
     }
 
     use 'junegunn/vim-easy-align'
+
+    use {
+        'glepnir/dashboard-nvim',
+        event = 'VimEnter',
+        -- config = function()
+        --     require('dashboard').setup {
+              
+        --     }
+        -- end,
+        requires = {'nvim-tree/nvim-web-devicons'}
+    }
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

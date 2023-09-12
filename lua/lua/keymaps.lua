@@ -1,7 +1,7 @@
-vim.keymap.set('n', '<C-Up>', ':resize +5<CR>', opts)
-vim.keymap.set('n', '<C-Down>', ':resize -5<CR>', opts)
-vim.keymap.set('n', '<C-Left>', ':vertical resize +5<CR>', opts)
-vim.keymap.set('n', '<C-Right>', ':vertical resize -5<CR>', opts)
+vim.keymap.set('n', '<C-Up>', ':resize +5<CR>', {silent = true})
+vim.keymap.set('n', '<C-Down>', ':resize -5<CR>', {silent = true})
+vim.keymap.set('n', '<C-Left>', ':vertical resize +5<CR>', {silent = true})
+vim.keymap.set('n', '<C-Right>', ':vertical resize -5<CR>', {silent = true})
 
 vim.keymap.set('i', '<C-h>', '<Left>', opts)
 vim.keymap.set('i', '<C-j>', '<Down>', opts)
@@ -11,10 +11,10 @@ vim.keymap.set('i', '<C-l>', '<Right>', opts)
 vim.keymap.set('v', '<', '<gv', opts)
 vim.keymap.set('v', '>', '>gv', opts)
 
-vim.keymap.set('n', 'sh', ':vsplit<CR>')
-vim.keymap.set('n', 'sl', ':vsplit<CR><C-w>l')
-vim.keymap.set('n', 'sj', ':split<CR><C-w>j')
-vim.keymap.set('n', 'sk', ':split<CR>')
+vim.keymap.set('n', 'sh', ':vsplit<CR>', {silent = true})
+vim.keymap.set('n', 'sl', ':vsplit<CR><C-w>l', {silent = true})
+vim.keymap.set('n', 'sj', ':split<CR><C-w>j', {silent = true})
+vim.keymap.set('n', 'sk', ':split<CR>', {silent = true})
 vim.keymap.set('n', '<A-h>', '<C-w>h', opts)
 vim.keymap.set('n', '<A-j>', '<C-w>j', opts)
 vim.keymap.set('n', '<A-k>', '<C-w>k', opts)
@@ -71,11 +71,20 @@ require("telescope").setup {
         -- builtin picker
       },
       extensions = {
-        -- Your extension configuration goes here:
-        -- extension_name = {
-        --   extension_config_key = value,
-        -- }
-        -- please take a look at the readme of the extension you want to configure
+        project = {
+          base_dirs = {
+            -- 'C:\Users\sunhengdi\AppData\Local\nvim-data\site\pack\packer\start\dashboard-nvim',
+            -- {'~/dev/src2'},
+            -- {'~/dev/src3', max_depth = 4},
+            -- {path = '~/dev/src4'},
+            -- {path = '~/dev/src5', max_depth = 2},
+          },
+          hidden_files = true, -- default: false
+          theme = "dropdown",
+          order_by = "asc",
+          search_by = "title",
+          sync_with_nvim_tree = true, -- default false
+        }
       }
 }
 
@@ -85,6 +94,10 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 -- nvim-telescope/telescope
+
+-- telescope-project.nvim
+require'telescope'.load_extension('project')
+-- telescope-project.nvim
 
 
 -- chentoast/marks.nvim
@@ -121,5 +134,51 @@ vim.keymap.set('n', '/', ':HopPattern<CR>')
 
 
 -- 'junegunn/vim-easy-align'
-vim.keymap.set('v', 'ea', ':EasyAlign')
+vim.keymap.set('v', 'ea=', ':EasyAlign=<CR>')
+vim.keymap.set('v', 'ea<space>', ':EasyAlign<space><CR>')
+vim.keymap.set('v', 'ea:', ':EasyAlign:<CR>')
+vim.keymap.set('v', 'ea;', ':EasyAlign;<CR>')
+vim.keymap.set('v', 'ea,', ':EasyAlign,<CR>')
+vim.keymap.set('v', 'ea(', ':EasyAlign(<CR>')
 -- 'junegunn/vim-easy-align'
+
+
+-- 'glepnir/dashboard-nvim'
+local db = require('dashboard')
+db.setup({
+  theme = 'hyper',
+  config = {
+    week_header = {
+     enable = true,
+    },
+    shortcut = {
+      -- { 
+      --   desc = '󰊳 Edit', 
+      --   group = '@property', 
+      --   action = ':e ', 
+      --   key = 'e' 
+      -- },
+      {
+        icon = ' ',
+        icon_hl = '@variable',
+        desc = 'Files',
+        group = 'Label',
+        action = 'Telescope find_files',
+        key = 'f',
+      },
+      {
+        desc = ' Projects',
+        group = 'DiagnosticHint',
+        action = 'Telescope projects',
+        key = 'p',
+      },
+      -- {
+      --   desc = ' dotfiles',
+      --   group = 'Number',
+      --   action = 'Telescope dotfiles',
+      --   key = 'd',
+      -- },
+    },
+  },
+})
+-- 'glepnir/dashboard-nvim'
