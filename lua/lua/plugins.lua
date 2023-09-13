@@ -52,8 +52,6 @@ return require('packer').startup(function(use)
         end
     }
 
-    use 'junegunn/vim-easy-align'
-
     use {
         'glepnir/dashboard-nvim',
         event = 'VimEnter',
@@ -64,6 +62,18 @@ return require('packer').startup(function(use)
         -- end,
         requires = {'nvim-tree/nvim-web-devicons'}
     }
+
+    -- use 'nvim-tree/nvim-web-devicons'
+
+    use 'godlygeek/tabular'
+
+    if system == "Darwin" then  
+        use 'lyokha/vim-xkbswitch'
+    elseif system == "Windows" then
+        -- do something Windows related
+    elseif system == "Linux" then  
+        use '520Matches/fcitx5.vim'
+    end
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
