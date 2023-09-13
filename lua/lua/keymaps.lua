@@ -60,21 +60,7 @@ require("telescope").setup {
       pickers = {
       },
       extensions = {
-        project = {
-          base_dirs = {
-            -- 'C:\Users\sunhengdi\AppData\Local\nvim-data\site\pack\packer\start\dashboard-nvim',
-            -- {'~/dev/src2'},
-            -- {'~/dev/src3', max_depth = 4},
-            -- {path = '~/dev/src4'},
-            -- {path = '~/dev/src5', max_depth = 2},
-          },
-          hidden_files = true, -- default: false
-          theme = "dropdown",
-          order_by = "asc",
-          search_by = "title",
-          sync_with_nvim_tree = true, -- default false
-        }
-      }
+      },
 }
 
 local builtin = require('telescope.builtin')
@@ -85,9 +71,47 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 -- nvim-telescope/telescope
 
 -- telescope-project.nvim
--- require'telescope'.load_extension('project')
+require('telescope').setup {
+  -- local project_actions = require("telescope._extensions.project.actions")
+  -- extensions = {
+  --   project = {
+  --     base_dirs = {
+  --       '/dev',
+  --       {'~/github'},
+  --       {'/dev', max_depth = 4},
+  --       {path = '/lib'},
+  --       {path = '/proc', max_depth = 2},
+  --     },
+  --     hidden_files = true, -- default: false
+  --     theme = "dropdown",
+  --     order_by = "asc",
+  --     search_by = "title",
+  --     sync_with_nvim_tree = true, -- default false
+  --     -- default for on_project_selected = find project files
+  --     -- on_project_selected = function(prompt_bufnr)
+  --     --   -- Do anything you want in here. For example:
+  --     --   project_actions.change_working_directory(prompt_bufnr, false)
+  --     --   require("harpoon.ui").nav_file(1)
+  --     -- end
+  --   }
+  -- }
+}
 -- telescope-project.nvim
 
+-- kdheepak/lazygit.nvim
+vim.g.lazygit_floating_window_winblend = 0 -- transparency of floating window
+vim.g.lazygit_floating_window_scaling_factor = 0.9 -- scaling factor for floating window
+vim.g.lazygit_floating_window_border_chars = {'╭','─', '╮', '│', '╯','─', '╰', '│'} -- customize lazygit popup window border characters
+vim.g.lazygit_floating_window_use_plenary = 0 -- use plenary.nvim to manage floating window if available
+vim.g.lazygit_use_neovim_remote = 1 -- fallback to 0 if neovim-remote is not installed
+
+vim.g.lazygit_use_custom_config_file_path = 0 -- config file path is evaluated if this value is 1
+vim.g.lazygit_config_file_path = '' -- custom config file path
+
+vim.keymap.set('n', '<leader>lg', ':LazyGit<CR>', {silent = true})
+-- kdheepak/lazygit.nvim
+
+require("telescope").load_extension("lazygit")
 
 -- chentoast/marks.nvim
 require'marks'.setup {
@@ -103,23 +127,30 @@ vim.keymap.set('n', '<leader>m', ':MarksListAll<CR>')
 
 
 -- phaazon/hop.nvim
-local hop = require('hop')
-local directions = require('hop.hint').HintDirection
-vim.keymap.set('', 'f', function()
-    hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true })
-end, {remap=true})
-vim.keymap.set('', 'F', function()
-    hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true })
-end, {remap=true})
-vim.keymap.set('', 't', function()
-    hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })
-end, {remap=true})
-vim.keymap.set('', 'T', function()
-    hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })
-end, {remap=true})
+-- local hop = require('hop')
+-- local directions = require('hop.hint').HintDirection
+-- vim.keymap.set('', 'f', function()
+--     hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true })
+-- end, {remap=true})
+-- vim.keymap.set('', 'F', function()
+--     hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true })
+-- end, {remap=true})
+-- vim.keymap.set('', 't', function()
+--     hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })
+-- end, {remap=true})
+-- vim.keymap.set('', 'T', function()
+--     hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })
+-- end, {remap=true})
 
-vim.keymap.set('n', '/', ':HopPattern<CR>')
+-- vim.keymap.set('n', '/', ':HopPattern<CR>')
 -- phaazon/hop.nvim
+
+-- easymotion/vim-easymotion
+vim.keymap.set('n', '/', '<Plug>(easymotion-sn)')
+vim.keymap.set('o', '/', '<Plug>(easymotion-tn)')
+vim.keymap.set('n', 'n', '<Plug>(easymotion-next)')
+vim.keymap.set('n', 'N', '<Plug>(easymotion-prev)')
+-- easymotion/vim-easymotion
 
 -- godlygeek/tabular
 vim.keymap.set('v', '<leader>=', ':Tabularize /=<CR>', {silent = true})
@@ -131,7 +162,7 @@ vim.keymap.set('v', '<leader><Space>', ':Tabularize /<Space><CR>', {silent = tru
 -- godlygeek/tabular
 
 
--- 'glepnir/dashboard-nvim'
+-- 'nvimdev/dashboard-nvim'
 local db = require('dashboard')
 db.setup({
   theme = 'hyper',
@@ -155,6 +186,14 @@ db.setup({
         key = 'f',
       },
       {
+        icon = ' ',
+        icon_hl = '@variable',
+        desc = 'String',
+        group = 'Label',
+        action = 'Telescope live_grep',
+        key = 's',
+      },
+      {
         desc = ' Projects',
         group = 'DiagnosticHint',
         action = 'Telescope projects',
@@ -169,7 +208,7 @@ db.setup({
     },
   },
 })
--- 'glepnir/dashboard-nvim'
+-- 'nvimdev/dashboard-nvim'
 
 -- lyokha/vim-xkbswitch
 if system == "Darwin" then  

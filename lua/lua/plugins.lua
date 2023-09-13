@@ -34,23 +34,22 @@ return require('packer').startup(function(use)
             {'nvim-lua/plenary.nvim'} ,
             {'nvim-telescope/telescope-file-browser.nvim'},
             {'nvim-telescope/telescope-project.nvim'},
+            {'kdheepak/lazygit.nvim'},
         }
     }
-    -- use {
-    --     "nvim-telescope/telescope-file-browser.nvim",
-    --     requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
-    -- }
 
     use 'chentoast/marks.nvim'
 
     -- easy move
-    use {
-        'phaazon/hop.nvim',
-        branch = 'v2', -- optional but strongly recommended
-        config = function()
-            require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
-        end
-    }
+    -- use {
+    --     'phaazon/hop.nvim',
+    --     branch = 'v2', -- optional but strongly recommended
+    --     config = function()
+    --         require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+    --     end
+    -- }
+
+    use 'easymotion/vim-easymotion'
 
     use {
         'glepnir/dashboard-nvim',
@@ -62,8 +61,6 @@ return require('packer').startup(function(use)
         -- end,
         requires = {'nvim-tree/nvim-web-devicons'}
     }
-
-    -- use 'nvim-tree/nvim-web-devicons'
 
     use 'godlygeek/tabular'
 
