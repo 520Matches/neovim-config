@@ -25,6 +25,8 @@ return require('packer').startup(function(use)
 
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
 
+    use 'nvim-tree/nvim-tree.lua'
+
     -- use 'terryma/vim-multiple-cursors'
 
     use {
@@ -39,15 +41,6 @@ return require('packer').startup(function(use)
     }
 
     use 'chentoast/marks.nvim'
-
-    -- easy move
-    -- use {
-    --     'phaazon/hop.nvim',
-    --     branch = 'v2', -- optional but strongly recommended
-    --     config = function()
-    --         require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
-    --     end
-    -- }
 
     use 'easymotion/vim-easymotion'
 
@@ -64,13 +57,15 @@ return require('packer').startup(function(use)
 
     use 'godlygeek/tabular'
 
-    if system == "Darwin" then  
+    if os.name() == "MacOS" then  
         use 'lyokha/vim-xkbswitch'
-    elseif system == "Windows" then
+    elseif os.name() == "Windows" then
         -- do something Windows related
-    elseif system == "Linux" then  
+    elseif os.name() == "Linux" then  
         use '520Matches/fcitx5.vim'
     end
+
+    use 'nvim-lspconfig'
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
