@@ -233,12 +233,12 @@ db.setup({
         action  = 'Telescope live_grep',
         key     = 's',
       },
-      {
-        desc   = ' Projects',
-        group  = 'DiagnosticHint',
-        action = 'Telescope projects',
-        key    = 'p',
-      },
+      -- {
+      --   desc   = ' Projects',
+      --   group  = 'DiagnosticHint',
+      --   action = 'Telescope projects',
+      --   key    = 'p',
+      -- },
       -- {
       --   desc = ' dotfiles',
       --   group = 'Number',
@@ -261,7 +261,7 @@ end
 local lspconfig = require('lspconfig')
 
 -- python
-lspconfig.pyright.setup {}
+-- lspconfig.pyright.setup {}
 
 -- c
 -- lspconfig.clangd.setup{}
@@ -301,8 +301,14 @@ vim.api.nvim_create_autocmd('LspAttach', {
     -- end, opts)
   end,
 })
-
 -- neovim/nvim-lspconfig
+
+-- mason.nvim
+require("mason").setup()
+require("mason-lspconfig").setup {
+  ensure_installed = { "lua_ls", "clangd", "cmake", "gopls", "jsonls", "pyright" },
+}
+-- mason.nvim
 
 -- lspkind-nvim
 local lspkind = require('lspkind')
