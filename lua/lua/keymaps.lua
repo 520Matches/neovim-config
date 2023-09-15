@@ -19,14 +19,10 @@ vim.keymap.set('n', '<A-h>', '<C-w>h', opts)
 vim.keymap.set('n', '<A-j>', '<C-w>j', opts)
 vim.keymap.set('n', '<A-k>', '<C-w>k', opts)
 vim.keymap.set('n', '<A-l>', '<C-w>l', opts)
-vim.keymap.set('i', '<A-h>', '<ESC><C-w>h', opts)
-vim.keymap.set('i', '<A-j>', '<ESC><C-w>j', opts)
-vim.keymap.set('i', '<A-k>', '<ESC><C-w>k', opts)
-vim.keymap.set('i', '<A-l>', '<ESC><C-w>l', opts)
-vim.keymap.set('v', '<A-h>', '<ESC><C-w>h', opts)
-vim.keymap.set('v', '<A-j>', '<ESC><C-w>j', opts)
-vim.keymap.set('v', '<A-k>', '<ESC><C-w>k', opts)
-vim.keymap.set('v', '<A-l>', '<ESC><C-w>l', opts)
+vim.keymap.set({'i','v'}, '<A-h>', '<ESC><C-w>h', opts)
+vim.keymap.set({'i','v'}, '<A-j>', '<ESC><C-w>j', opts)
+vim.keymap.set({'i','v'}, '<A-k>', '<ESC><C-w>k', opts)
+vim.keymap.set({'i','v'}, '<A-l>', '<ESC><C-w>l', opts)
 
 vim.keymap.set('i' , '{'  , '{}<Left>'   , opts)
 vim.keymap.set('i' , '['  , '[]<Left>'   , opts)
@@ -34,11 +30,20 @@ vim.keymap.set('i' , '('  , '()<Left>'   , opts)
 vim.keymap.set('i' , '"'  , '""<Left>'   , opts)
 vim.keymap.set('i' , '\'' , '\'\'<Left>' , opts)
 
+-- ellisonleao/gruvbox.nvim
+vim.cmd([[colorscheme gruvbox]])
+-- ellisonleao/gruvbox.nvim
+
 -- voldikss/vim-floaterm
+-- vim.g.floaterm_keymap_new    = '<F9>'
+-- vim.g.floaterm_keymap_prev   = '<F10>'
+-- vim.g.floaterm_keymap_next   = '<F11>'
+vim.g.floaterm_keymap_toggle = '<F12>'
+
 -- vim.keymap.set('n', '<F9>', ':FloatermNew<CR>')
 -- vim.keymap.set('n', '<F10>', ':FloatermPrev<CR>')
 -- vim.keymap.set('n', '<F11>', ':FloatermNext<CR>')
--- vim.keymap.set('n', '<F12>', ':FloatermToggle<CR>')
+vim.keymap.set('n', '<F12>', ':FloatermToggle<CR>')
 -- voldikss/vim-floaterm
 
 -- bagrat/vim-buffet
@@ -46,6 +51,36 @@ vim.keymap.set('n' , '<Tab>'      , ':bn<CR>')
 vim.keymap.set('n' , '<S-Tab>'    , ':bp<CR>')
 vim.keymap.set('n' , '<leader>bd' , ':bd<CR>')
 -- bagrat/vim-buffet
+
+-- vim-airline-themes
+vim.g.airline_theme = 'random'
+-- vim-airline-themes
+
+-- nvim-treesitter
+require'nvim-treesitter.configs'.setup {
+  -- A list of parser names, or "all" (the five listed parsers should always be installed)
+  ensure_installed = { "c", "lua", "vim", "vimdoc", "go", "python", "json", "xml"},
+  -- Install parsers synchronously (only applied to `ensure_installed`)
+  sync_install = false,
+  auto_install = true,
+  highlight = {
+    enable = true,
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = true,
+  },
+  -- rainbow = {
+  --   enable = true,
+  --   -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
+  --   extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+  --   max_file_lines = nil, -- Do not enable for files with more than n lines, int
+  --   -- colors = {}, -- table of hex strings
+  --   -- termcolors = {} -- table of colour name strings
+  -- },
+}
+-- nvim-treesitter
 
 -- nvim-tree/nvim-tree.lua
 vim.g.loaded_netrw       = 1
@@ -92,7 +127,7 @@ vim.keymap.set('n' , '<leader>fh' , builtin.help_tags  , {})
 -- nvim-telescope/telescope
 
 -- telescope-project.nvim
-require('telescope').setup {
+-- require('telescope').setup {
   -- local project_actions = require("telescope._extensions.project.actions")
   -- extensions = {
   --   project = {
@@ -116,7 +151,7 @@ require('telescope').setup {
   --     -- end
   --   }
   -- }
-}
+-- }
 -- telescope-project.nvim
 
 -- kdheepak/lazygit.nvim
@@ -135,22 +170,24 @@ vim.keymap.set('n', '<leader>lg', ':LazyGit<CR>', {silent = true})
 require("telescope").load_extension("lazygit")
 
 -- chentoast/marks.nvim
-require'marks'.setup {
+require('marks').setup {
     mappings = {
         set_next = "m,",
-        next     = "m[",
-        prev     = "m]",
+        next     = "mn",
+        prev     = "mp",
     }
 }
 
-vim.keymap.set('n', '<leader>m', ':MarksListAll<CR>')
+vim.keymap.set('n', '<leader>ma', ':MarksListAll<CR>', {silent = true})
+vim.keymap.set('n', '<leader>rm', ':delmarks ')
+vim.keymap.set('n', '<leader>dm', ':delmarks!<CR>', {silent = true})
 -- chentoast/marks.nvim
 
 -- easymotion/vim-easymotion
-vim.keymap.set('n', '/', '<Plug>(easymotion-sn)')
-vim.keymap.set('o', '/', '<Plug>(easymotion-tn)')
-vim.keymap.set('n', 'n', '<Plug>(easymotion-next)')
-vim.keymap.set('n', 'N', '<Plug>(easymotion-prev)')
+vim.keymap.set('n', '/', '<Plug>(easymotion-sn)', {silent = true})
+vim.keymap.set('o', '/', '<Plug>(easymotion-tn)', {silent = true})
+vim.keymap.set('n', 'n', '<Plug>(easymotion-next)', {silent = true})
+vim.keymap.set('n', 'N', '<Plug>(easymotion-prev)', {silent = true})
 -- easymotion/vim-easymotion
 
 -- godlygeek/tabular
@@ -162,6 +199,8 @@ vim.keymap.set('v', '<leader>:', ':Tabularize /:<CR>', {silent = true})
 vim.keymap.set('v', '<leader><Space>', ':Tabularize /<Space><CR>', {silent = true})
 -- godlygeek/tabular
 
+-- mg979/vim-visual-multi
+-- mg979/vim-visual-multi
 
 -- 'nvimdev/dashboard-nvim'
 local db = require('dashboard')
@@ -216,3 +255,116 @@ if os.name() == "MacOS" then
   vim.g.XkbSwitchEnabled = 1
 end
 -- lyokha/vim-xkbswitch
+
+
+-- neovim/nvim-lspconfig
+local lspconfig = require('lspconfig')
+
+-- python
+lspconfig.pyright.setup {}
+
+-- c
+-- lspconfig.clangd.setup{}
+
+-- vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
+-- vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+-- vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+-- vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
+
+-- Use LspAttach autocommand to only map the following keys
+-- after the language server attaches to the current buffer
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  callback = function(ev)
+    -- Enable completion triggered by <c-x><c-o>
+    vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+
+    -- Buffer local mappings.
+    -- See `:help vim.lsp.*` for documentation on any of the below functions
+    local opts = { buffer = ev.buf }
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', 'H', vim.lsp.buf.hover, opts)
+    -- vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+    -- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+    -- vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
+    -- vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
+    -- vim.keymap.set('n', '<space>wl', function()
+    --   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    -- end, opts)
+    vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, opts)
+    -- vim.keymap.set({ 'n', 'v' }, '<leader>rn', vim.lsp.buf.rename, opts)
+    -- vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
+    -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+    -- vim.keymap.set('n', '<space>f', function()
+    --   vim.lsp.buf.format { async = true }
+    -- end, opts)
+  end,
+})
+
+-- neovim/nvim-lspconfig
+
+-- lspkind-nvim
+local lspkind = require('lspkind')
+-- lspkind-nvim
+
+-- hrsh7th/nvim-cmp
+local cmp = require('cmp')
+cmp.setup({
+  snippet = {
+    expand = function(args)
+      -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+      require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+    end,
+  },
+  window = {
+    -- completion = cmp.config.window.bordered(),
+    -- documentation = cmp.config.window.bordered(),
+  },
+  mapping = cmp.mapping.preset.insert({
+    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    -- ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.abort(),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+  }),
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+    -- { name = 'vsnip' }, -- For vsnip users.
+    { name = 'luasnip' }, -- For luasnip users.
+  }, {
+    { name = 'buffer' },
+    { name = 'path' },
+    { name = 'cmdline' },
+  }),
+  formatting = {
+    format = lspkind.cmp_format({
+      with_text = true, -- do not show text alongside icons
+      maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+      before = function (entry, vim_item)
+        -- Source 显示提示来源
+        vim_item.menu = "["..string.upper(entry.source.name).."]"
+        return vim_item
+      end
+    })
+  },
+})
+
+-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline({ '/', '?' }, {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = {
+    { name = 'buffer' }
+  }
+})
+
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(':', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
+    { name = 'path' }
+  }, {
+    { name = 'cmdline' }
+  })
+})
+-- hrsh7th/nvim-cmp

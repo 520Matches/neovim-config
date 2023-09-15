@@ -16,6 +16,8 @@ return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
+    use "ellisonleao/gruvbox.nvim"
+
     use 'voldikss/vim-floaterm'
 
     use 'bagrat/vim-buffet'
@@ -26,8 +28,6 @@ return require('packer').startup(function(use)
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
 
     use 'nvim-tree/nvim-tree.lua'
-
-    -- use 'terryma/vim-multiple-cursors'
 
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.2',
@@ -57,6 +57,8 @@ return require('packer').startup(function(use)
 
     use 'godlygeek/tabular'
 
+    -- use 'mg979/vim-visual-multi'
+
     if os.name() == "MacOS" then  
         use 'lyokha/vim-xkbswitch'
     elseif os.name() == "Windows" then
@@ -65,10 +67,21 @@ return require('packer').startup(function(use)
         use '520Matches/fcitx5.vim'
     end
 
-    use 'nvim-lspconfig'
+    use 'neovim/nvim-lspconfig'
 
-    -- Automatically set up your configuration after cloning packer.nvim
-    -- Put this at the end after all plugins
+    use 'neovim/nvim-lspconfig'
+    use 'hrsh7th/cmp-nvim-lsp'
+    use 'hrsh7th/cmp-buffer'
+    use 'hrsh7th/cmp-path'
+    use 'hrsh7th/cmp-cmdline'
+    use 'hrsh7th/nvim-cmp'
+
+    use 'L3MON4D3/LuaSnip'
+    use 'saadparwaiz1/cmp_luasnip'
+    use 'rafamadriz/friendly-snippets'
+
+    use 'onsails/lspkind-nvim'
+
     if packer_bootstrap then
         require('packer').sync()
     end

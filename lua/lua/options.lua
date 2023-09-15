@@ -11,6 +11,9 @@ vim.opt.number         = true
 vim.opt.hlsearch       = false
 vim.opt.relativenumber = true
 
+-- or "light" if you want light mode
+vim.o.background       = "dark"
+
 -- 用<C-a>和<C-x>的时候默认是十进制
 -- vim.opt.nrformats = true
 
@@ -22,9 +25,3 @@ vim.g.maplocalleader = ' '
 
 -- 当前行高亮
 vim.wo.cursorline = true
-
--- vim-floaterm
--- vim.g.floaterm_keymap_new    = '<F9>'
--- vim.g.floaterm_keymap_prev   = '<F10>'
--- vim.g.floaterm_keymap_next   = '<F11>'
--- vim.g.floaterm_keymap_toggle = '<F12>'
