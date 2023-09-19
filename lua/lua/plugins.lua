@@ -27,8 +27,10 @@ return require('packer').startup(function(use)
 
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
 
-    use 'nvim-tree/nvim-tree.lua'
+    use 'numToStr/Comment.nvim'
 
+    use 'nvim-tree/nvim-tree.lua'
+    
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.2',
         requires = 
