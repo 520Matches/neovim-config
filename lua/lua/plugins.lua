@@ -1,4 +1,3 @@
-
 local ensure_packer = function()
     local fn = vim.fn
     local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
@@ -40,6 +39,30 @@ return require('packer').startup(function(use)
             {'nvim-telescope/telescope-project.nvim'},
             {'kdheepak/lazygit.nvim'},
         }
+    }
+
+    use {
+        "coffebar/neovim-project",
+        config = function()
+            require("neovim-project").setup {
+                projects = { -- define project roots
+                    "~/.config/nvim/*",
+                    "~/github/*",
+                    "~/downloads/*",
+                },
+                -- Path to store history and sessions
+                datapath = vim.fn.stdpath("data"), -- ~/.local/share/nvim/
+
+                -- Overwrite some of Session Manager options
+                session_manager_opts = {
+                    autosave_ignore_dirs = {
+                        vim.fn.expand("~"), -- don't create a session for $HOME/
+                        "/tmp",
+                    },
+                },
+            }
+        end,
+        requires = { "nvim-telescope/telescope.nvim", "Shatur/neovim-session-manager" }
     }
 
     use 'chentoast/marks.nvim'

@@ -59,7 +59,7 @@ vim.g.airline_theme = 'random'
 -- nvim-treesitter
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all" (the five listed parsers should always be installed)
-  ensure_installed = { "c", "lua", "vim", "vimdoc", "go", "python", "json", "xml"},
+  ensure_installed = { "c", "lua", "vim", "vimdoc", "go", "python", "json", "xml", "bash"},
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
   auto_install = true,
@@ -150,19 +150,42 @@ vim.keymap.set('n', '<C-n>', ':NvimTreeToggle<CR>', {silent = true})
 -- nvim-tree/nvim-tree.lua
 
 -- nvim-telescope/telescope
+-- local project_actions = require("telescope._extensions.project.actions")
 require("telescope").setup {
-    defaults = {
-        -- Default configuration for telescope goes here:
-        -- config_key = value,
-        mappings = {
-          i = {
-          }
+  -- extensions = {
+  --     project = {
+  --       base_dirs = {
+  --         '/dev',
+  --         {'~/github'},
+  --         {'/dev', max_depth = 4},
+  --         {path = '/lib'},
+  --         {path = '/proc', max_depth = 2},
+  --       },
+  --       hidden_files = true, -- default: false
+  --       theme = "dropdown",
+  --       order_by = "asc",
+  --       search_by = "title",
+  --       sync_with_nvim_tree = true, -- default false
+  --       -- default for on_project_selected = find project files
+  --       on_project_selected = function(prompt_bufnr)
+  --         -- Do anything you want in here. For example:
+  --         project_actions.change_working_directory(prompt_bufnr, false)
+  --         require("harpoon.ui").nav_file(1)
+  --       end
+  --     }
+  -- },
+  defaults = {
+      -- Default configuration for telescope goes here:
+      -- config_key = value,
+      mappings = {
+        i = {
         }
-      },
-      pickers = {
-      },
-      extensions = {
-      },
+      }
+  },
+  pickers = {
+  },
+  extensions = {
+  },
 }
 
 local builtin = require('telescope.builtin')
@@ -172,32 +195,37 @@ vim.keymap.set('n' , '<leader>fb' , builtin.buffers    , {})
 vim.keymap.set('n' , '<leader>fh' , builtin.help_tags  , {})
 -- nvim-telescope/telescope
 
+-- neovim-session-manager
+-- require('session_manager').setup()
+-- require('session_manager.config').setup()
+-- neovim-session-manager
+
+-- coffebar/neovim-project
+-- require("neovim-project").setup({
+--   projects = { -- define project roots
+--       "~/.config/nvim/*",
+--       "~/github/*",
+--       "~/downloads/*",
+--   },
+--   datapath = vim.fn.stdpath("data"), -- ~/.local/share/nvim/
+
+--   -- Overwrite some of Session Manager options
+--   session_manager_opts = {
+--     autosave_ignore_dirs = {
+--       vim.fn.expand("~"), -- don't create a session for $HOME/
+--       "/tmp",
+--     },
+--     autosave_ignore_filetypes = {
+--       -- All buffers of these file types will be closed before the session is saved
+--       "gitcommit",
+--       "gitrebase",
+--     },
+--   },
+-- })
+-- coffebar/neovim-project
+
+
 -- telescope-project.nvim
--- require('telescope').setup {
-  -- local project_actions = require("telescope._extensions.project.actions")
-  -- extensions = {
-  --   project = {
-  --     base_dirs = {
-  --       '/dev',
-  --       {'~/github'},
-  --       {'/dev', max_depth = 4},
-  --       {path = '/lib'},
-  --       {path = '/proc', max_depth = 2},
-  --     },
-  --     hidden_files = true, -- default: false
-  --     theme = "dropdown",
-  --     order_by = "asc",
-  --     search_by = "title",
-  --     sync_with_nvim_tree = true, -- default false
-  --     -- default for on_project_selected = find project files
-  --     -- on_project_selected = function(prompt_bufnr)
-  --     --   -- Do anything you want in here. For example:
-  --     --   project_actions.change_working_directory(prompt_bufnr, false)
-  --     --   require("harpoon.ui").nav_file(1)
-  --     -- end
-  --   }
-  -- }
--- }
 -- telescope-project.nvim
 
 -- kdheepak/lazygit.nvim
@@ -279,12 +307,14 @@ db.setup({
         action  = 'Telescope live_grep',
         key     = 's',
       },
-      -- {
-      --   desc   = ' Projects',
-      --   group  = 'DiagnosticHint',
-      --   action = 'Telescope projects',
-      --   key    = 'p',
-      -- },
+      {
+        icon   = ' ',
+        icon_hl = '@variable',
+        desc   = 'Projects',
+        group  = 'DiagnosticHint',
+        action = 'Telescope projects',
+        key    = 'p',
+      },
       -- {
       --   desc = ' dotfiles',
       --   group = 'Number',
@@ -305,7 +335,6 @@ end
 
 -- neovim/nvim-lspconfig
 local lspconfig = require('lspconfig')
-
 -- python
 -- lspconfig.pyright.setup {}
 
@@ -338,7 +367,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     -- vim.keymap.set('n', '<space>wl', function()
     --   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     -- end, opts)
-    vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, opts)
+    -- vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, opts)
     -- vim.keymap.set({ 'n', 'v' }, '<leader>rn', vim.lsp.buf.rename, opts)
     -- vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
     -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
@@ -352,12 +381,62 @@ vim.api.nvim_create_autocmd('LspAttach', {
 -- mason.nvim
 require("mason").setup()
 require("mason-lspconfig").setup {
-  ensure_installed = { "lua_ls", "clangd", "cmake", "gopls", "jsonls", "pyright" },
+  ensure_installed = { "lua_ls", "clangd", "bashls", "gopls", "jsonls", "pyright" },
 }
 -- mason.nvim
 
 -- lspkind-nvim
 local lspkind = require('lspkind')
+lspkind.init({
+  -- DEPRECATED (use mode instead): enables text annotations
+  --
+  -- default: true
+  -- with_text = true,
+
+  -- defines how annotations are shown
+  -- default: symbol
+  -- options: 'text', 'text_symbol', 'symbol_text', 'symbol'
+  mode = 'symbol_text',
+
+  -- default symbol map
+  -- can be either 'default' (requires nerd-fonts font) or
+  -- 'codicons' for codicon preset (requires vscode-codicons font)
+  --
+  -- default: 'default'
+  preset = 'codicons',
+
+  -- override preset symbols
+  --
+  -- default: {}
+  symbol_map = {
+    Text = "󰉿",
+    Method = "󰆧",
+    Function = "󰊕",
+    Constructor = "",
+    Field = "󰜢",
+    Variable = "󰀫",
+    Class = "󰠱",
+    Interface = "",
+    Module = "",
+    Property = "󰜢",
+    Unit = "󰑭",
+    Value = "󰎠",
+    Enum = "",
+    Keyword = "󰌋",
+    Snippet = "",
+    Color = "󰏘",
+    File = "󰈙",
+    Reference = "󰈇",
+    Folder = "󰉋",
+    EnumMember = "",
+    Constant = "󰏿",
+    Struct = "󰙅",
+    Event = "",
+    Operator = "󰆕",
+    TypeParameter = "",
+  },
+})
+
 -- lspkind-nvim
 
 -- hrsh7th/nvim-cmp
