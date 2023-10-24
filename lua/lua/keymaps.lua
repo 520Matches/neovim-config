@@ -150,29 +150,8 @@ vim.keymap.set('n', '<C-n>', ':NvimTreeToggle<CR>', {silent = true})
 -- nvim-tree/nvim-tree.lua
 
 -- nvim-telescope/telescope
--- local project_actions = require("telescope._extensions.project.actions")
 require("telescope").setup {
   -- extensions = {
-  --     project = {
-  --       base_dirs = {
-  --         '/dev',
-  --         {'~/github'},
-  --         {'/dev', max_depth = 4},
-  --         {path = '/lib'},
-  --         {path = '/proc', max_depth = 2},
-  --       },
-  --       hidden_files = true, -- default: false
-  --       theme = "dropdown",
-  --       order_by = "asc",
-  --       search_by = "title",
-  --       sync_with_nvim_tree = true, -- default false
-  --       -- default for on_project_selected = find project files
-  --       on_project_selected = function(prompt_bufnr)
-  --         -- Do anything you want in here. For example:
-  --         project_actions.change_working_directory(prompt_bufnr, false)
-  --         require("harpoon.ui").nav_file(1)
-  --       end
-  --     }
   -- },
   defaults = {
       -- Default configuration for telescope goes here:
@@ -194,36 +173,6 @@ vim.keymap.set('n' , '<leader>fg' , builtin.live_grep  , {})
 vim.keymap.set('n' , '<leader>fb' , builtin.buffers    , {})
 vim.keymap.set('n' , '<leader>fh' , builtin.help_tags  , {})
 -- nvim-telescope/telescope
-
--- neovim-session-manager
--- require('session_manager').setup()
--- require('session_manager.config').setup()
--- neovim-session-manager
-
--- coffebar/neovim-project
--- require("neovim-project").setup({
---   projects = { -- define project roots
---       "~/.config/nvim/*",
---       "~/github/*",
---       "~/downloads/*",
---   },
---   datapath = vim.fn.stdpath("data"), -- ~/.local/share/nvim/
-
---   -- Overwrite some of Session Manager options
---   session_manager_opts = {
---     autosave_ignore_dirs = {
---       vim.fn.expand("~"), -- don't create a session for $HOME/
---       "/tmp",
---     },
---     autosave_ignore_filetypes = {
---       -- All buffers of these file types will be closed before the session is saved
---       "gitcommit",
---       "gitrebase",
---     },
---   },
--- })
--- coffebar/neovim-project
-
 
 -- telescope-project.nvim
 -- telescope-project.nvim
@@ -269,62 +218,15 @@ vim.keymap.set('v', '<leader>=', ':Tabularize /=<CR>', {silent = true})
 vim.keymap.set('v', '<leader>,', ':Tabularize /,<CR>', {silent = true})
 vim.keymap.set('v', '<leader>;', ':Tabularize /;<CR>', {silent = true})
 vim.keymap.set('v', '<leader>(', ':Tabularize /(<CR>', {silent = true})
+vim.keymap.set('v', '<leader>)', ':Tabularize /)<CR>', {silent = true})
 vim.keymap.set('v', '<leader>:', ':Tabularize /:<CR>', {silent = true})
+vim.keymap.set('v', '<leader>{', ':Tabularize /{<CR>', {silent = true})
+vim.keymap.set('v', '<leader>}', ':Tabularize /}<CR>', {silent = true})
 vim.keymap.set('v', '<leader><Space>', ':Tabularize /<Space><CR>', {silent = true})
 -- godlygeek/tabular
 
 -- mg979/vim-visual-multi
 -- mg979/vim-visual-multi
-
--- 'nvimdev/dashboard-nvim'
-local db = require('dashboard')
-db.setup({
-  theme = 'hyper',
-  config = {
-    week_header = {
-     enable = true,
-    },
-    shortcut = {
-      -- { 
-      --   desc = '󰊳 Edit', 
-      --   group = '@property', 
-      --   action = ':e ', 
-      --   key = 'e' 
-      -- },
-      {
-        icon    = ' ',
-        icon_hl = '@variable',
-        desc    = 'Files',
-        group   = 'Label',
-        action  = 'Telescope find_files',
-        key     = 'f',
-      },
-      {
-        icon    = ' ',
-        icon_hl = '@variable',
-        desc    = 'String',
-        group   = 'Label',
-        action  = 'Telescope live_grep',
-        key     = 's',
-      },
-      {
-        icon   = ' ',
-        icon_hl = '@variable',
-        desc   = 'Projects',
-        group  = 'DiagnosticHint',
-        action = 'Telescope projects',
-        key    = 'p',
-      },
-      -- {
-      --   desc = ' dotfiles',
-      --   group = 'Number',
-      --   action = 'Telescope dotfiles',
-      --   key = 'd',
-      -- },
-    },
-  },
-})
--- 'nvimdev/dashboard-nvim'
 
 -- lyokha/vim-xkbswitch
 if os.name() == "MacOS" then  
@@ -335,11 +237,6 @@ end
 
 -- neovim/nvim-lspconfig
 local lspconfig = require('lspconfig')
--- python
--- lspconfig.pyright.setup {}
-
--- c
--- lspconfig.clangd.setup{}
 
 -- vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
 -- vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)

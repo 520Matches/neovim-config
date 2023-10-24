@@ -41,44 +41,9 @@ return require('packer').startup(function(use)
         }
     }
 
-    use {
-        "coffebar/neovim-project",
-        config = function()
-            require("neovim-project").setup {
-                projects = { -- define project roots
-                    "~/.config/nvim/*",
-                    "~/github/*",
-                    "~/downloads/*",
-                },
-                -- Path to store history and sessions
-                datapath = vim.fn.stdpath("data"), -- ~/.local/share/nvim/
-
-                -- Overwrite some of Session Manager options
-                session_manager_opts = {
-                    autosave_ignore_dirs = {
-                        vim.fn.expand("~"), -- don't create a session for $HOME/
-                        "/tmp",
-                    },
-                },
-            }
-        end,
-        requires = { "nvim-telescope/telescope.nvim", "Shatur/neovim-session-manager" }
-    }
-
     use 'chentoast/marks.nvim'
 
     use 'easymotion/vim-easymotion'
-
-    use {
-        'glepnir/dashboard-nvim',
-        event = 'VimEnter',
-        -- config = function()
-        --     require('dashboard').setup {
-              
-        --     }
-        -- end,
-        requires = {'nvim-tree/nvim-web-devicons'}
-    }
 
     use 'godlygeek/tabular'
 
