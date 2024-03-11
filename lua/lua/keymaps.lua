@@ -278,7 +278,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 -- mason.nvim
 require("mason").setup()
 require("mason-lspconfig").setup {
-  ensure_installed = { "lua_ls", "clangd", "bashls", "gopls", "jsonls", "pyright" },
+  -- ensure_installed = { "lua_ls", "clangd", "bashls", "gopls", "jsonls", "pyright" },
 }
 -- mason.nvim
 

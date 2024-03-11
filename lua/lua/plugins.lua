@@ -2,7 +2,7 @@ local ensure_packer = function()
     local fn = vim.fn
     local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
     if fn.empty(fn.glob(install_path)) > 0 then
-        fn.system({'git', 'clone', '--depth', '1', 'https://githubfast.com/wbthomason/packer.nvim', install_path})
+        fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
         vim.cmd [[packadd packer.nvim]]
     return true
     end
@@ -48,7 +48,7 @@ packer.init({
     },
     depth = 1, -- Git clone depth
     clone_timeout = 60, -- Timeout, in seconds, for git clones
-    default_url_format = 'https://githubfast.com/%s' -- Lua format string used for "aaa/bbb" style plugins
+    default_url_format = 'https://github.com/%s' -- Lua format string used for "aaa/bbb" style plugins
   },
   display = {
     non_interactive = false, -- If true, disable display windows for all operations
@@ -103,7 +103,7 @@ return require('packer').startup(function(use)
     use 'nvim-tree/nvim-tree.lua'
     
     use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.2',
+        'nvim-telescope/telescope.nvim', tag = '0.1.5',
         requires = 
         {
             {'nvim-lua/plenary.nvim'} ,
