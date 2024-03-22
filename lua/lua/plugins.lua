@@ -107,8 +107,6 @@ return require('packer').startup(function(use)
         requires = 
         {
             {'nvim-lua/plenary.nvim'} ,
-            {'nvim-telescope/telescope-file-browser.nvim'},
-            {'nvim-telescope/telescope-project.nvim'},
             {'kdheepak/lazygit.nvim'},
         }
     }
@@ -118,8 +116,6 @@ return require('packer').startup(function(use)
     use 'easymotion/vim-easymotion'
 
     use 'godlygeek/tabular'
-
-    -- use 'mg979/vim-visual-multi'
 
     if os.name() == "MacOS" then  
         use 'lyokha/vim-xkbswitch'
