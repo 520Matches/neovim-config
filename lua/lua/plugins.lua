@@ -143,6 +143,8 @@ return require('packer').startup(function(use)
 
     use 'onsails/lspkind-nvim'
 
+	use "sindrets/diffview.nvim"
+
     if packer_bootstrap then
         require('packer').sync()
     end

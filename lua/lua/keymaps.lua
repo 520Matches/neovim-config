@@ -353,6 +353,10 @@ lspkind.init({
 
 -- lspkind-nvim
 
+-- sindrets/diffview.nvim
+vim.keymap.set('n' , '<leader>dv'  , ':DiffviewOpen<CR>'          , {silent = true})
+-- sindrets/diffview.nvim
+
 -- hrsh7th/nvim-cmp
 local cmp = require('cmp')
 cmp.setup({
