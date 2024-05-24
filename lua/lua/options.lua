@@ -20,6 +20,7 @@ vim.o.background       = "dark"
 -- 可以和系统的剪贴板共用,unnamed是*寄存器,unnamedplus是+寄存器
 vim.opt.clipboard    = 'unnamedplus'
 
+-- 配置光标
 -- vim.opt.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20"
 -- vim.opt.guicursor = "n-v-i-c:block-Cursor"
 

@@ -221,6 +221,7 @@ require('marks').setup {
 vim.keymap.set('n', '<leader>ma', ':MarksListAll<CR>', {silent = true})
 vim.keymap.set('n', '<leader>rm', ':delmarks ')
 vim.keymap.set('n', '<leader>dm', ':delmarks!<CR>', {silent = true})
+vim.keymap.set('n', '<leader>mc', '<C-w>j<C-w>j:bd<CR>', opts)
 -- chentoast/marks.nvim
 
 -- easymotion/vim-easymotion
