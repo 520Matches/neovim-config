@@ -419,3 +419,6 @@ cmp.setup.cmdline(':', {
   })
 })
 -- hrsh7th/nvim-cmp
+
+-- brooth/far.vim
+-- brooth/far.vim
