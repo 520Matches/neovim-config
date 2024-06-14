@@ -16,32 +16,36 @@ vim.keymap.set('n' , 'sl' , ':vsplit<CR><C-w>l' , {silent = true})
 vim.keymap.set('n' , 'sj' , ':split<CR><C-w>j'  , {silent = true})
 vim.keymap.set('n' , 'sk' , ':split<CR>'        , {silent = true})
 if os.name() == "MacOS" then  
-	vim.keymap.set('n', '<D-h>', '<C-w>h', opts)
-	vim.keymap.set('n', '<D-j>', '<C-w>j', opts)
-	vim.keymap.set('n', '<D-k>', '<C-w>k', opts)
-	vim.keymap.set('n', '<D-l>', '<C-w>l', opts)
-	vim.keymap.set({'i','v'}, '<D-h>', '<ESC><C-w>h', opts)
-	vim.keymap.set({'i','v'}, '<D-j>', '<ESC><C-w>j', opts)
-	vim.keymap.set({'i','v'}, '<D-k>', '<ESC><C-w>k', opts)
-	vim.keymap.set({'i','v'}, '<D-l>', '<ESC><C-w>l', opts)
+	vim.keymap.set('n'  , '<D-h>' , '<C-w>h' , opts)
+	vim.keymap.set('n'  , '<D-j>' , '<C-w>j' , opts)
+	vim.keymap.set('n'  , '<D-k>' , '<C-w>k' , opts)
+	vim.keymap.set('n'  , '<D-l>' , '<C-w>l' , opts)
+	vim.keymap.set({'i' , 'v'}    , '<D-h>'  , '<ESC><C-w>h' , opts)
+	vim.keymap.set({'i' , 'v'}    , '<D-j>'  , '<ESC><C-w>j' , opts)
+	vim.keymap.set({'i' , 'v'}    , '<D-k>'  , '<ESC><C-w>k' , opts)
+	vim.keymap.set({'i' , 'v'}    , '<D-l>'  , '<ESC><C-w>l' , opts)
+
+	vim.keymap.set('n'  , '<F5>'  , ':e ~/.config/nvim/init.lua<CR>' , {silent = true})
 elseif os.name() == "Windows" then
-	vim.keymap.set('n', '<A-h>', '<C-w>h', opts)
-	vim.keymap.set('n', '<A-j>', '<C-w>j', opts)
-	vim.keymap.set('n', '<A-k>', '<C-w>k', opts)
-	vim.keymap.set('n', '<A-l>', '<C-w>l', opts)
-	vim.keymap.set({'i','v'}, '<A-h>', '<ESC><C-w>h', opts)
-	vim.keymap.set({'i','v'}, '<A-j>', '<ESC><C-w>j', opts)
-	vim.keymap.set({'i','v'}, '<A-k>', '<ESC><C-w>k', opts)
-	vim.keymap.set({'i','v'}, '<A-l>', '<ESC><C-w>l', opts)
+	vim.keymap.set('n'  , '<A-h>' , '<C-w>h' , opts)
+	vim.keymap.set('n'  , '<A-j>' , '<C-w>j' , opts)
+	vim.keymap.set('n'  , '<A-k>' , '<C-w>k' , opts)
+	vim.keymap.set('n'  , '<A-l>' , '<C-w>l' , opts)
+	vim.keymap.set({'i' , 'v'}    , '<A-h>'  , '<ESC><C-w>h' , opts)
+	vim.keymap.set({'i' , 'v'}    , '<A-j>'  , '<ESC><C-w>j' , opts)
+	vim.keymap.set({'i' , 'v'}    , '<A-k>'  , '<ESC><C-w>k' , opts)
+	vim.keymap.set({'i' , 'v'}    , '<A-l>'  , '<ESC><C-w>l' , opts)
 elseif os.name() == "Linux" then  
-	vim.keymap.set('n', '<A-h>', '<C-w>h', opts)
-	vim.keymap.set('n', '<A-j>', '<C-w>j', opts)
-	vim.keymap.set('n', '<A-k>', '<C-w>k', opts)
-	vim.keymap.set('n', '<A-l>', '<C-w>l', opts)
-	vim.keymap.set({'i','v'}, '<A-h>', '<ESC><C-w>h', opts)
-	vim.keymap.set({'i','v'}, '<A-j>', '<ESC><C-w>j', opts)
-	vim.keymap.set({'i','v'}, '<A-k>', '<ESC><C-w>k', opts)
-	vim.keymap.set({'i','v'}, '<A-l>', '<ESC><C-w>l', opts)
+	vim.keymap.set('n'  , '<A-h>' , '<C-w>h' , opts)
+	vim.keymap.set('n'  , '<A-j>' , '<C-w>j' , opts)
+	vim.keymap.set('n'  , '<A-k>' , '<C-w>k' , opts)
+	vim.keymap.set('n'  , '<A-l>' , '<C-w>l' , opts)
+	vim.keymap.set({'i' , 'v'}    , '<A-h>'  , '<ESC><C-w>h' , opts)
+	vim.keymap.set({'i' , 'v'}    , '<A-j>'  , '<ESC><C-w>j' , opts)
+	vim.keymap.set({'i' , 'v'}    , '<A-k>'  , '<ESC><C-w>k' , opts)
+	vim.keymap.set({'i' , 'v'}    , '<A-l>'  , '<ESC><C-w>l' , opts)
+
+	vim.keymap.set('n', '<F5>', ':e ~/.config/nvim/init.lua<CR>', {silent = true})
 end
 
 vim.keymap.set('i' , '{'  , '{}<Left>'   , opts)
@@ -421,4 +425,6 @@ cmp.setup.cmdline(':', {
 -- hrsh7th/nvim-cmp
 
 -- brooth/far.vim
+-- vim.g.far\#enable_undo=1
+-- vim.keymap.set('v' , '<leader>fr', ':Far get_visual_selection', opts)
 -- brooth/far.vim
