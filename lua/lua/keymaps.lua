@@ -25,7 +25,7 @@ if os.name() == "MacOS" then
 	vim.keymap.set({'i' , 'v'}    , '<D-k>'  , '<ESC><C-w>k' , opts)
 	vim.keymap.set({'i' , 'v'}    , '<D-l>'  , '<ESC><C-w>l' , opts)
 
-	vim.keymap.set('n'  , '<F5>'  , ':e ~/.config/nvim/init.lua<CR>' , {silent = true})
+	-- vim.keymap.set('n'  , '<F5>'  , ':e ~/.config/nvim/init.lua<CR>' , {silent = true})
 elseif os.name() == "Windows" then
 	vim.keymap.set('n'  , '<A-h>' , '<C-w>h' , opts)
 	vim.keymap.set('n'  , '<A-j>' , '<C-w>j' , opts)
@@ -45,7 +45,7 @@ elseif os.name() == "Linux" then
 	vim.keymap.set({'i' , 'v'}    , '<A-k>'  , '<ESC><C-w>k' , opts)
 	vim.keymap.set({'i' , 'v'}    , '<A-l>'  , '<ESC><C-w>l' , opts)
 
-	vim.keymap.set('n', '<F5>', ':e ~/.config/nvim/init.lua<CR>', {silent = true})
+	-- vim.keymap.set('n', '<F5>', ':e ~/.config/nvim/init.lua<CR>', {silent = true})
 end
 
 vim.keymap.set('i' , '{'  , '{}<Left>'   , opts)
