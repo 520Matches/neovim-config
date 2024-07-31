@@ -244,6 +244,7 @@ vim.keymap.set('v', '<leader>)', ':Tabularize /)<CR>', {silent = true})
 vim.keymap.set('v', '<leader>:', ':Tabularize /:<CR>', {silent = true})
 vim.keymap.set('v', '<leader>{', ':Tabularize /{<CR>', {silent = true})
 vim.keymap.set('v', '<leader>}', ':Tabularize /}<CR>', {silent = true})
+vim.keymap.set('v', '<leader>|', ':Tabularize /|<CR>', {silent = true})
 vim.keymap.set('v', '<leader><Space>', ':Tabularize /<Space><CR>', {silent = true})
 vim.keymap.set('v', '<leader>/', ':Tabularize ////<CR>', {silent = true})
 -- godlygeek/tabular
